@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Molengo&family=Raleway&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: rgb(232, 232, 232);
+}
+
+main {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.timeline-container ul {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.timeline-container {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.timeline {
+  width: 16px;
+  height: 100%;
+  position: absolute;
+  background-color: rgb(237, 81, 141);
+}
+
+.timeline-container ul li {
+  font-family: "Molengo", sans-serif;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  width: 3rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 2.5rem; /* Tamaño completo del contenedor padre */
+}
+
+.cambia {
+  animation-name: cambiar-escala;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes cambiar-escala {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1.35);
+  }
+}
+
+.timeline-container ul li:nth-child(1) {
+  border-radius: 50%;
+}
+
+.informacion {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.informacion img {
+  width: 12rem;
+  object-fit: cover;
+  align-self: center;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+input,
+textarea {
+  width: 95%;
+  border-radius: 3px;
+  padding: 0.3rem;
+  border: none;
+  background-color: grey;
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+label {
+  font-size: 0.75rem;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 1rem;
+}
+
+form {
+  margin-top: 3rem;
+  padding: 1rem;
+}
