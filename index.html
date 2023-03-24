@@ -10,7 +10,6 @@
   <body>
     <main>
       <section class="timeline-container">
-        <div class="timeline"></div>
         <ul>
           <li>
             <a href="/index.html"
@@ -45,7 +44,20 @@
           src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Zelda_Logo.svg"
           alt="logo Zelda"
         />
-        <form>
+
+        <p>
+          The Legend of Zelda es una serie de videojuegos de acción-aventura
+          creada por los diseñadores japoneses Shigeru Miyamoto y Takashi
+          Tezuka, y desarrollada por Nintendo, empresa que también se encarga de
+          su distribución internacional. Su trama por lo general describe las
+          heroicas aventuras del joven guerrero Link, que debe enfrentarse a
+          peligros y resolver acertijos para ayudar a la Princesa Zelda a
+          derrotar a Ganondorf y salvar su hogar, el reino de Hyrule.
+        </p>
+      </section>
+      <div id="popup" class="oculto">
+        <!-- aquí irá el contenido del pop-up -->
+        <form class="formulario">
           <h2>Agregar Nuevo Juego</h2>
           <ul>
             <li>
@@ -57,17 +69,19 @@
               <input type="text" id="title" name="title" />
             </li>
             <li>
-              <label for="image">Url Imagen:</label>
+              <label for="image">Url de la Imagen:</label>
               <input type="url" id="image" name="image" />
             </li>
             <li>
               <label for="text">Texto:</label>
-              <textarea id="text" name="text" rows="10"></textarea>
+              <textarea id="text" name="text" rows="5"></textarea>
             </li>
           </ul>
-          <button>Enviar</button>
+          <button>Añadir</button>
         </form>
-      </section>
+        <div class="cerrar" onclick="ocultarPopup()">X</div>
+      </div>
+      <button id="boton-popup" onclick="mostrarPopup()">+</button>
     </main>
     <script src="script.js"></script>
   </body>
