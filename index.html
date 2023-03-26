@@ -9,35 +9,7 @@
   </head>
   <body>
     <main>
-      <section class="timeline-container">
-        <ul>
-          <li>
-            <a href="/index.html"
-              ><img src="/image/home_icon.svg" alt="Inicio"
-            /></a>
-          </li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-
-          <li><span class="cambia">1901</span></li>
-        </ul>
-      </section>
+      <section class="timeline-container"></section>
       <section class="informacion">
         <h1>Cronología de Zelda</h1>
         <img
@@ -55,34 +27,8 @@
           derrotar a Ganondorf y salvar su hogar, el reino de Hyrule.
         </p>
       </section>
-      <div id="popup" class="oculto">
-        <!-- aquí irá el contenido del pop-up -->
-        <form class="formulario">
-          <h2>Agregar Nuevo Juego</h2>
-          <ul>
-            <li>
-              <label for="date">Año:</label>
-              <input type="text" id="date" name="date" />
-            </li>
-            <li>
-              <label for="title">Título:</label>
-              <input type="text" id="title" name="title" />
-            </li>
-            <li>
-              <label for="image">Url de la Imagen:</label>
-              <input type="url" id="image" name="image" />
-            </li>
-            <li>
-              <label for="text">Texto:</label>
-              <textarea id="text" name="text" rows="5"></textarea>
-            </li>
-          </ul>
-          <button>Añadir</button>
-        </form>
-        <div class="cerrar" onclick="ocultarPopup()">X</div>
-      </div>
-      <button id="boton-popup" onclick="mostrarPopup()">+</button>
     </main>
-    <script src="script.js"></script>
+    <script src="./helpers.js" type="module"></script>
+    <script src="main.js" type="module"></script>
   </body>
 </html>
