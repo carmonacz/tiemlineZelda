@@ -1,5 +1,13 @@
 "use strict";
 
+let juegos;
+let titulos;
+let fechas;
+let textos;
+let imagenes;
+let lista;
+let eventosParaFechas;
+
 function crearFormulario() {
   // Crear el div con id="popup"
   const popupDiv = document.createElement("div");
@@ -122,46 +130,77 @@ async function getData(url) {
 
 async function mostrarJuegos() {
   try {
-    let juegos = await getData(
+    juegos = await getData(
       "https://gist.githubusercontent.com/bertez/8e62741154903c35edb3bfb825a7f052/raw/b5cd5137fd168116cc71740f1fbb75819d0fa82e/zelda-timeline.json"
     );
     juegos.sort(function (a, b) {
       return a.date - b.date;
     });
-
-    let titulos = juegos.map((titulo) => titulo.title);
-    let fechas = juegos.map((fecha) => fecha.date);
-    let textos = juegos.map((texto) => texto.text);
-    let imagenes = juegos.map((imagenes) => imagenes.image);
-
-    const lista = document.createElement("ul");
-
-    for (let i = 0; i < fechas.length; i++) {
-      const fecha = fechas[i];
-      const item = document.createElement("li");
-      const texto = document.createTextNode(fecha);
-      const span = document.createElement("span");
-      span.classList.add("cambia");
-      span.appendChild(texto);
-      item.appendChild(span);
-      lista.appendChild(item);
-    }
-    const seccion = document.querySelector(".timeline-container");
-    seccion.appendChild(lista);
-
-    const nuevoElemento = document.createElement("li");
-    const enlace = document.createElement("a");
-    enlace.setAttribute("href", "/index.html");
-    const imagen = document.createElement("img");
-    imagen.setAttribute("src", "/image/home_icon.svg");
-    imagen.setAttribute("alt", "Inicio");
-    enlace.appendChild(imagen);
-    nuevoElemento.appendChild(enlace);
-
-    lista.insertBefore(nuevoElemento, lista.firstChild);
+    // Aqui tenemos ya los juegos ordenados por salida y mas abajo están los mapas de todo.
+    titulos = juegos.map((titulo) => titulo.title);
+    fechas = juegos.map((fecha) => fecha.date);
+    textos = juegos.map((texto) => texto.text);
+    imagenes = juegos.map((imagenes) => imagenes.image);
   } catch (e) {
     console.error("Hubo un error:", e.message);
   }
 }
 
-export { crearFormulario, mostrarPopup, ocultarPopup, getData, mostrarJuegos };
+async function crearLista() {
+  await mostrarJuegos();
+  lista = document.createElement("ul");
+
+  for (let i = 0; i < fechas.length; i++) {
+    const fecha = fechas[i];
+    const item = document.createElement("li");
+    const texto = document.createTextNode(fecha);
+    const span = document.createElement("span");
+    span.classList.add("cambia");
+    span.appendChild(texto);
+    item.appendChild(span);
+    lista.appendChild(item);
+  }
+
+  const seccion = document.querySelector(".timeline-container");
+  seccion.appendChild(lista);
+  const nuevoElemento = document.createElement("li");
+  const enlace = document.createElement("a");
+  enlace.setAttribute("href", "/index.html");
+  const imagen = document.createElement("img");
+  imagen.setAttribute("src", "/image/home_icon.svg");
+  imagen.setAttribute("alt", "Inicio");
+  enlace.appendChild(imagen);
+  nuevoElemento.appendChild(enlace);
+
+  lista.insertBefore(nuevoElemento, lista.firstChild);
+}
+
+async function crearEventosenlista() {
+  await mostrarJuegos();
+  console.log(lista);
+  let eventosParaFechas = lista.querySelectorAll(".cambia");
+  eventosParaFechas.forEach((elemento, indice) => {
+    elemento.addEventListener("click", function () {
+      document.getElementById("titulo").innerHTML = titulos[indice];
+      document.getElementById("imagen").src = imagenes[indice];
+      document.getElementById("parrafo").innerHTML = textos[indice];
+    });
+  });
+}
+
+export {
+  juegos,
+  titulos,
+  fechas,
+  textos,
+  imagenes,
+  lista,
+  crearLista,
+  eventosParaFechas,
+  crearEventosenlista,
+  crearFormulario,
+  mostrarPopup,
+  ocultarPopup,
+  getData,
+  mostrarJuegos,
+};
