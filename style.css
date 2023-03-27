@@ -1,0 +1,168 @@
+@font-face {
+  font-family: hylian;
+  src: url(/fonts/Zelda_Demo.ttf);
+}
+@font-face {
+  font-family: triforce;
+  src: url(/fonts/Triforce.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-family: hylian;
+  font-size: 1rem;
+  max-width: 425px;
+  min-width: 425px;
+  margin: auto;
+}
+
+body {
+  font-family: hylian;
+  font-size: 1rem;
+  min-height: 100%;
+  background-image: url(/img/fondo.jpg);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 90px auto;
+  grid-template-rows: 200px auto 90px;
+  grid-template-areas:
+    "nav header"
+    "nav main"
+    "nav footer";
+  /* border: solid rgba(0, 0, 0, 0.2); */
+}
+
+nav {
+  grid-area: nav;
+  /* background-color: #933336; */
+  /* border: solid 1px black; */
+  /* box-shadow: 7px 0px 8px -7px rgba(0, 0, 0, 0.7); */
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+header {
+  grid-area: header;
+  /* border: solid 1px black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* box-shadow: 6px 5px 14px -6px rgba(0, 0, 0, 0.3); */
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style-type: none;
+  position: relative;
+}
+
+ul li {
+  background-color: #dadada;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  /* box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.37); */
+}
+
+/* ul li::before {
+  display: block;
+} */
+
+ul li:not(ul li:last-child):after {
+  content: "";
+  position: absolute;
+  height: 200%;
+  top: 100%;
+  width: 7px;
+  background-color: #f0f0f0;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+#icono-home {
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
+
+main {
+  grid-area: main;
+  /* border: solid 1px black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  /* box-shadow: 6px 5px 14px -6px rgba(0, 0, 0, 0.3); */
+}
+
+h1 {
+  font-family: triforce;
+}
+
+#logoZelda {
+  object-fit: cover;
+  width: 15rem;
+  filter: drop-shadow(2.5px 2.5px 1.5px #0d0d0d70);
+}
+
+p {
+  font-size: 15px;
+  text-align: left;
+  /* border-radius: %; */
+  /* border-left: 5px solid #0d0d0d20;
+  border-right: 5px solid #0d0d0d20; */
+  /* border-top: 5px solid #0d0d0d20; */
+  /* border-bottom: 5px solid #0d0d0d20; */
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 2rem;
+}
+
+#imagen {
+  object-fit: cover;
+  width: 16rem;
+  border-radius: 0.5rem;
+  border: black solid;
+}
+
+footer {
+  grid-area: footer;
+  /* box-shadow: 7px -6px 13px -7px rgba(0, 0, 0, 0.2); */
+  display: flex;
+  justify-content: flex-end;
+
+  /* background-color: #0d0d0d70; */
+  /* border: solid 1px black; */
+}
+
+.ancla-home {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.boton {
+  height: 50px;
+  width: 50px;
+  /* position: fixed;
+  bottom: 0;
+  right: 0; */
+}
