@@ -40,6 +40,7 @@ main {
 .timeline-container ul {
   display: flex;
   flex-direction: column;
+  transform-style: preserve-3d;
   z-index: 1;
 }
 
@@ -47,8 +48,7 @@ main {
   font-family: "Molengo", sans-serif;
   font-size: 20px;
   background-color: rgb(35, 35, 35);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
+  border-radius: 50%;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   margin: 2rem;
@@ -56,11 +56,15 @@ main {
   justify-content: center;
   align-items: center;
   width: 5rem;
-  height: 3rem;
+  height: 5rem;
   position: relative;
 }
 
-.timeline-container ul li:not(.timeline-container ul li:last-of-type)::before {
+span {
+  cursor: pointer;
+}
+
+.timeline-container ul li:not(:last-of-type)::before {
   content: "";
   position: absolute;
   top: 1rem;
@@ -68,12 +72,16 @@ main {
   height: 200%; /* altura del 100% para cubrir todo el contenedor */
   width: 16px;
   transform: translateX(-50%);
-  background-color: rgb(237, 81, 141);
+  background-color: rgb(202, 1, 11);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   z-index: -1; /* poner detrás de los elementos */
+  pointer-events: none; /* no se puede interactuar con el elemento */
 }
 
+/* EFECTOS ESPECIALES */
+
 .cambia {
+  cursor: pointer;
   animation-name: cambiar-escala;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -102,21 +110,66 @@ main {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
 }
 
-.informacion img {
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.informacion figure img {
   width: 12rem;
   object-fit: cover;
-  align-self: center;
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.601));
+}
+
+figcaption {
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(202, 1, 11);
+  margin-top: 2rem;
 }
 
 p {
   margin: 1rem;
-  font-size: 22px;
+  font-size: 2rem;
+  text-align: justify;
+}
+
+/* Transicion de la información */
+
+.informacion h1,
+.informacion figure img,
+.informacion p,
+.informacion figcaption {
+  opacity: 0;
+}
+
+.informacion.mostrando h1,
+.informacion.mostrando figure img,
+.informacion.mostrando p,
+.informacion.mostrando figcaption {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.informacion.mostrando figure img {
+  animation: girar 1s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes girar {
+  from {
+    transform: translateX(200px);
+  }
+  to {
+    transform: rotateY(360deg);
+    transform: translateX(0px) rotateY(360deg);
+  }
 }
 
 /* FORMULARIO */
@@ -139,7 +192,7 @@ textarea {
   border-radius: 3px;
   padding: 0.3rem;
   border: 1px solid white;
-  background-color: rgba(84, 69, 248, 0.76);
+  background-color: rgba(202, 1, 11, 0.553);
   font-size: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
@@ -209,7 +262,7 @@ button {
 
 #boton-popup {
   font-size: 30px;
-  background-color: rgba(137, 43, 226, 0.856);
+  background-color: rgba(202, 1, 11, 0.865);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -221,6 +274,24 @@ button {
 }
 
 @media screen and (max-width: 400px) {
+  .timeline-container ul li {
+    font-size: 1rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  figcaption {
+    margin-top: 1rem;
+  }
+
   .formulario {
     width: 100%;
     max-width: none;
