@@ -135,9 +135,6 @@ function crearFormulario() {
       document.getElementById("parrafo").innerHTML = textarea.value;
     });
 
-    // Agregar nodo de texto con la información del formulario
-    //nuevoItem.textContent = `${fecha} - ${titulo} - ${imagen} - ${texto}`;
-
     // Agregar el nuevo elemento de lista a la lista existente
     lista.appendChild(nuevoItem);
   }
