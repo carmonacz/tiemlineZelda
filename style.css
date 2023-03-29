@@ -32,7 +32,7 @@ body {
 body {
   display: grid;
   grid-template-columns: 40px auto;
-  grid-template-rows: 200px auto 70px;
+  grid-template-rows: 200px auto 90px;
   grid-template-areas:
     "nav header"
     "nav main"
@@ -77,7 +77,7 @@ ul {
 }
 
 ul li {
-  background-color: #808080;
+  background-color: rgb(35, 35, 35);
   border-radius: 50%;
   width: 2.7rem;
   height: 2.7rem;
@@ -111,7 +111,7 @@ ul li:not(ul li:last-child):after {
   height: 150%;
   top: 100%;
   width: 5px;
-  background-color: #0d0d0d20;
+  background-color: rgb(202, 1, 11);
   left: 50%;
   z-index: -1;
   transform: translateX(-50%);
@@ -199,10 +199,15 @@ footer {
   width: 2.5rem;
 }
 
-.boton {
+#boton-popup {
+  background-color: transparent;
+  background-image: url("./img/agregar.svg");
+  box-shadow: none;
   height: 50px;
   width: 50px;
   /* position: absolute; */
+  bottom: 15px;
+  right: 10px;
 }
 
 /* FORMULARIO */
@@ -287,28 +292,11 @@ button {
   cursor: pointer;
 }
 
-#boton-popup {
-  font-size: 30px;
-  background-color: rgba(137, 43, 226, 0.856);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-}
-
 @media screen and (max-width: 400px) {
   .formulario {
     width: 100%;
     max-width: none;
   }
-}
-
-.cambia:hover {
-  cursor: pointer;
 }
 
 @media (min-width: 900px) {
@@ -341,4 +329,57 @@ ul li:not(ul li:last-child):after {
 }
 */ #logoZelda {
   width: 300px;
+}
+
+*/efectos especiales*/ .informacion {
+  opacity: 0;
+  animation: fadeIN 1s linear;
+  animation-fill-mode: forwards;
+}
+
+.informacion {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#imagen.transicion {
+  animation: girar 2s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes girar {
+  from {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(360deg);
+    transform: translateX(0px) rotateY(360deg);
+  }
+}
+
+.cambia {
+  cursor: pointer;
+  animation-name: cambiar-escala;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes cambiar-escala {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.13);
+  }
 }
