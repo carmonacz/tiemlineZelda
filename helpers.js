@@ -103,6 +103,44 @@ function crearFormulario() {
 
   // Agregar el div con id="popup" al documento
   document.body.appendChild(popupDiv);
+
+  // Agregar evento "submit" al formulario
+  form.addEventListener("submit", mostrarDatos);
+
+  // Función para mostrar los datos introducidos
+  function mostrarDatos(event) {
+    event.preventDefault(); // Evita que se recargue la página al enviar el formulario
+
+    // Capturar los valores introducidos por el usuario
+    const fecha = input1.value;
+    const titulo = input2.value;
+    const imagen = input3.value;
+    const texto = textarea.value;
+
+    // Obtener referencia a la lista creada por crearLista()
+    const lista = document.querySelector(".timeline-container ul");
+
+    // Crear nuevo elemento de lista
+    const nuevoItem = document.createElement("li");
+    const fechaJuegoFormulario = document.createTextNode(fecha);
+    const spanFormulario = document.createElement("span");
+    spanFormulario.classList.add("cambia");
+    spanFormulario.appendChild(fechaJuegoFormulario);
+    nuevoItem.appendChild(spanFormulario);
+    lista.appendChild(nuevoItem);
+
+    nuevoItem.addEventListener("click", function () {
+      document.getElementById("titulo").innerHTML = input2.value;
+      document.getElementById("imagen").src = input3.value;
+      document.getElementById("parrafo").innerHTML = textarea.value;
+    });
+
+    // Agregar nodo de texto con la información del formulario
+    //nuevoItem.textContent = `${fecha} - ${titulo} - ${imagen} - ${texto}`;
+
+    // Agregar el nuevo elemento de lista a la lista existente
+    lista.appendChild(nuevoItem);
+  }
 }
 
 function mostrarPopup() {
@@ -160,7 +198,6 @@ async function crearLista() {
     lista.appendChild(item);
   }
 
-  lista.insertBefore(nuevoElemento, lista.firstChild);
 }
 
 async function crearEventosenlista(e) {
