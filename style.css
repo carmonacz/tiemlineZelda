@@ -26,7 +26,7 @@ body {
   font-family: hylian;
   font-size: 1rem;
   min-height: 100%;
-  background-image: url(/img/fondo.jpg);
+  background-image: url(./img/fondo.jpg);
 }
 
 body {
@@ -77,7 +77,7 @@ ul {
 }
 
 ul li {
-  background-color: #dadada;
+  background-color: black;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
@@ -97,13 +97,19 @@ ul li {
   display: block;
 } */
 
+span{
+
+  color: white;
+
+}
+
 ul li:not(ul li:last-child):after {
   content: "";
   position: absolute;
-  height: 100%;
+  height: 200%;
   top: 100%;
   width: 7px;
-  background-color: #f0f0f0;
+  background-color: red;
   left: 50%;
   z-index: -1;
   transform: translateX(-50%);
@@ -190,4 +196,116 @@ footer {
   /* position: absolute; */
   bottom: 15px;
   right: 10px;
+}
+
+/* FORMULARIO */
+
+.formulario {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 0.3rem;
+  border: 1px solid white;
+  background-color: rgba(84, 69, 248, 0.76);
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+label {
+  font-size: 1rem;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.655);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 20px;
+  transition: 0.3s ease all;
+  margin-top: 0.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  width: 100%;
+  height: 2rem;
+}
+
+/* POP-UP */
+
+#popup {
+  background-color: rgba(4, 4, 4, 0.849);
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 450px;
+  z-index: 9999;
+  padding: 20px;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.oculto {
+  display: none;
+}
+
+.cerrar:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+#boton-popup {
+  font-size: 30px;
+  background-color: rgba(137, 43, 226, 0.856);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+@media screen and (max-width: 400px) {
+  .formulario {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.cambia:hover {
+  cursor: pointer;
 }
