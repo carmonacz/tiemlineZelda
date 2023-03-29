@@ -19,7 +19,7 @@ function crearFormulario() {
   form.classList.add("formulario");
 
   // Crear el título del formulario
-  const titulo = document.createElement("h2");
+  const titulo = document.createElement("h3");
   titulo.textContent = "Agregar Nuevo Juego";
   form.appendChild(titulo);
 
@@ -93,13 +93,12 @@ function crearFormulario() {
   popupDiv.appendChild(cerrar);
 
   // Crear el botón para mostrar el popup
+  const footer = document.querySelector("footer");
   const botonPopup = document.createElement("button");
   botonPopup.id = "boton-popup";
   botonPopup.textContent = "+";
   botonPopup.onclick = mostrarPopup;
-
-  // Agregar el botón al documento
-  document.body.appendChild(botonPopup);
+  footer.appendChild(botonPopup);
 
   // Agregar el div con id="popup" al documento
   document.body.appendChild(popupDiv);
@@ -181,8 +180,10 @@ async function mostrarJuegos() {
   }
 }
 
-async function crearLista() {
+async function crearLista(e) {
   await mostrarJuegos();
+
+  let spanActual; // Variable para almacenar el span actual
 
   for (let i = 0; i < fechas.length; i++) {
     const fecha = fechas[i];
@@ -194,18 +195,46 @@ async function crearLista() {
     item.appendChild(span);
     lista.appendChild(item);
   }
-
 }
 
-async function crearEventosenlista(e) {
+async function crearEventosenlista() {
   await mostrarJuegos();
-  console.log(lista);
   let eventosParaFechas = lista.querySelectorAll(".cambia");
   eventosParaFechas.forEach((elemento, indice) => {
-    elemento.addEventListener("click", function () {
+    elemento.addEventListener("click", function (e) {
+      //Este es el codigo para cambiar la clase span:
+      const spanItem = e.target.closest("span");
+      if (!spanItem) return; // Si no se encuentra ningún elemento "span", detener la función
+
+      const listItem = spanItem.closest("li");
+      if (!listItem) return; // Si no se encuentra ningún elemento "li", detener la función
+
+      let elemento = document.querySelectorAll("span");
+      for (var j = 0; j < elemento.length; j++) {
+        elemento[j].classList.remove("cambia");
+      }
+
+      e.target.classList.add("cambia");
+
+      listItem.style.background = "rgb(202, 1, 11)";
+      const items = lista.querySelectorAll("li");
+      for (const item of items) {
+        if (item !== listItem) {
+          item.style.background = "rgb(35, 35, 35)";
+          item.style.color = "rgb(255,255,255)";
+        }
+      }
+
+      //Este es el código para modificar el contenido por cada juego
+
       document.getElementById("titulo").innerHTML = titulos[indice];
       document.getElementById("imagen").src = imagenes[indice];
       document.getElementById("parrafo").innerHTML = textos[indice];
+      const informacion = document.querySelector("#imagen");
+      informacion.classList.remove("transicion");
+      setTimeout(() => {
+        informacion.classList.add("transicion");
+      }, 50);
     });
   });
 }
