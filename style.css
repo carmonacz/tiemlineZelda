@@ -25,7 +25,7 @@ html {
 body {
   font-family: hylian;
   font-size: 1rem;
-  min-height: 100%;
+  height: 100%;
   background-image: url(./img/fondo.jpg);
 }
 
@@ -37,7 +37,7 @@ body {
     "nav header"
     "nav main"
     "nav footer";
-  padding: 2rem;
+  padding: 1rem;
 }
 
 nav {
@@ -77,11 +77,12 @@ ul {
 }
 
 ul li {
-  background-color: black;
+  background-color: #808080;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.7rem;
+  height: 2.7rem;
   display: flex;
+  font-size: 1rem;
 
   align-items: center;
   justify-content: center;
@@ -93,23 +94,24 @@ ul li {
   font-weight: bold;
 }
 
+ul {
+}
+
 /* ul li::before {
   display: block;
 } */
 
-span{
-
+span {
   color: white;
-
 }
 
 ul li:not(ul li:last-child):after {
   content: "";
   position: absolute;
-  height: 200%;
+  height: 150%;
   top: 100%;
-  width: 7px;
-  background-color: red;
+  width: 5px;
+  background-color: #0d0d0d20;
   left: 50%;
   z-index: -1;
   transform: translateX(-50%);
@@ -127,7 +129,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-direction: column;
   border-right: 5px solid #0d0d0d20;
   border-radius: 5px;
@@ -136,8 +138,13 @@ main {
   /* box-shadow: 6px 5px 14px -6px rgba(0, 0, 0, 0.3); */
 }
 
-h1 {
+#titulo {
   font-family: triforce;
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 #logoZelda {
@@ -148,7 +155,7 @@ h1 {
 
 p {
   font-size: 15px;
-  text-align: center;
+  text-align: left;
   /* border-radius: 10%; */
   /* border-left: 5px solid #0d0d0d20;
   border-right: 5px solid #0d0d0d20; */
@@ -159,13 +166,14 @@ p {
   padding-bottom: 2rem;
   padding-right: 2rem;
   padding-left: 2rem;
+  padding-top: 1.5rem;
 }
 
 #imagen {
   object-fit: cover;
-  width: 16rem;
+  width: 12rem;
   border-radius: 0.5rem;
-  border: black solid;
+  border: #0d0d0d20 solid;
 }
 
 footer {
@@ -183,6 +191,7 @@ footer {
   /* border: solid 1px black; */
 
   /* position: relative; */
+  margin-bottom: 1rem;
 }
 
 .ancla-home {
@@ -194,8 +203,6 @@ footer {
   height: 50px;
   width: 50px;
   /* position: absolute; */
-  bottom: 15px;
-  right: 10px;
 }
 
 /* FORMULARIO */
@@ -204,12 +211,6 @@ footer {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 400px;
-}
-
-h2 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  font-weight: bolder;
 }
 
 input,
@@ -308,4 +309,36 @@ button {
 
 .cambia:hover {
   cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  body {
+    grid-template:
+      "header header header" 100px
+      "nav main main" auto
+      "footer footer footer" 100px / 200px auto;
+  }
+
+  /* html {
+    margin: auto;
+  } */
+
+  /* ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+ul li:not(ul li:last-child):after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  width: 200%;
+  background-color: #0d0d0d20;
+  top: 50%;
+  z-index: -1;
+  transform: translateY(-50%); */
+}
+*/ #logoZelda {
+  width: 300px;
 }
