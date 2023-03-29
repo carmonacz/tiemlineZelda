@@ -1,0 +1,311 @@
+@font-face {
+  font-family: hylian;
+  src: url(/fonts/Zelda_Demo.ttf);
+}
+@font-face {
+  font-family: triforce;
+  src: url(/fonts/Triforce.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-family: hylian;
+  font-size: 1rem;
+  max-width: 425px;
+  min-width: 425px;
+  margin: auto;
+}
+
+body {
+  font-family: hylian;
+  font-size: 1rem;
+  min-height: 100%;
+  background-image: url(./img/fondo.jpg);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-template-rows: 200px auto 70px;
+  grid-template-areas:
+    "nav header"
+    "nav main"
+    "nav footer";
+  padding: 2rem;
+}
+
+nav {
+  grid-area: nav;
+  /* background-color: #933336; */
+  /* border: solid 1px black; */
+  /* box-shadow: 7px 0px 8px -7px rgba(0, 0, 0, 0.7); */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+header {
+  grid-area: header;
+  /* border: solid 1px black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15% 0;
+  border-right: 5px solid #0d0d0d20;
+
+  border-top: 5px solid #0d0d0d20;
+
+  /* box-shadow: 6px 5px 14px -6px rgba(0, 0, 0, 0.3); */
+}
+
+/* nav * {
+  flex-grow: 1;
+} */
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+ul li {
+  background-color: black;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  /* box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.37); */
+  color: black;
+  font-family: triforce;
+  font-weight: bold;
+}
+
+/* ul li::before {
+  display: block;
+} */
+
+span{
+
+  color: white;
+
+}
+
+ul li:not(ul li:last-child):after {
+  content: "";
+  position: absolute;
+  height: 200%;
+  top: 100%;
+  width: 7px;
+  background-color: red;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%);
+}
+
+#icono-home {
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+}
+
+main {
+  grid-area: main;
+  /* border: solid 1px black; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex-direction: column;
+  border-right: 5px solid #0d0d0d20;
+  border-radius: 5px;
+  padding-top: 2rem;
+  /* border-right: 5px solid #0d0d0d20; */
+  /* box-shadow: 6px 5px 14px -6px rgba(0, 0, 0, 0.3); */
+}
+
+h1 {
+  font-family: triforce;
+}
+
+#logoZelda {
+  object-fit: cover;
+  width: 15rem;
+  filter: drop-shadow(2.5px 2.5px 1.5px #0d0d0d70);
+}
+
+p {
+  font-size: 15px;
+  text-align: center;
+  /* border-radius: 10%; */
+  /* border-left: 5px solid #0d0d0d20;
+  border-right: 5px solid #0d0d0d20; */
+  /* border-top: 5px solid #0d0d0d20; */
+  /* border-bottom: 5px solid #0d0d0d20; */
+  /* margin-left: 0.5rem;
+  margin-right: 0.5rem; */
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+#imagen {
+  object-fit: cover;
+  width: 16rem;
+  border-radius: 0.5rem;
+  border: black solid;
+}
+
+footer {
+  grid-area: footer;
+  /* box-shadow: 7px -6px 13px -7px rgba(0, 0, 0, 0.2); */
+  display: flex;
+  justify-content: flex-end;
+  /* border-top: 5px solid #0d0d0d20; */
+  border-radius: 150px 200px;
+  border-bottom: 5px solid #0d0d0d20;
+  /* border-right: 5px solid #0d0d0d20; */
+  /* border-left: 5px solid #0d0d0d20; */
+  /*  */
+  /* background-color: #0d0d0d70; */
+  /* border: solid 1px black; */
+
+  /* position: relative; */
+}
+
+.ancla-home {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.boton {
+  height: 50px;
+  width: 50px;
+  /* position: absolute; */
+  bottom: 15px;
+  right: 10px;
+}
+
+/* FORMULARIO */
+
+.formulario {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 0.3rem;
+  border: 1px solid white;
+  background-color: rgba(84, 69, 248, 0.76);
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+label {
+  font-size: 1rem;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.655);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 20px;
+  transition: 0.3s ease all;
+  margin-top: 0.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  width: 100%;
+  height: 2rem;
+}
+
+/* POP-UP */
+
+#popup {
+  background-color: rgba(4, 4, 4, 0.849);
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 450px;
+  z-index: 9999;
+  padding: 20px;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.oculto {
+  display: none;
+}
+
+.cerrar:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+#boton-popup {
+  font-size: 30px;
+  background-color: rgba(137, 43, 226, 0.856);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+@media screen and (max-width: 400px) {
+  .formulario {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.cambia:hover {
+  cursor: pointer;
+}
