@@ -1,10 +1,6 @@
 "use strict";
 
 let juegos;
-let titulos;
-let fechas;
-let textos;
-let imagenes;
 let lista = document.querySelector(".timeline-container ul");
 let eventosParaFechas;
 
@@ -20,7 +16,7 @@ function crearFormulario() {
 
   // Crear el título del formulario
   const titulo = document.createElement("h3");
-  titulo.textContent = "Agregar Nuevo Juego";
+  titulo.textContent = "Add new game";
   form.appendChild(titulo);
 
   // Crear la lista de elementos del formulario
@@ -29,9 +25,9 @@ function crearFormulario() {
   // Crear el elemento "Año"
   const li1 = document.createElement("li");
   const label1 = document.createElement("label");
-  label1.textContent = "Año:";
+  label1.textContent = "Date:";
   const input1 = document.createElement("input");
-  input1.type = "text";
+  input1.type = "number";
   input1.id = "date";
   input1.name = "date";
   li1.appendChild(label1);
@@ -41,7 +37,7 @@ function crearFormulario() {
   // Crear el elemento "Título"
   const li2 = document.createElement("li");
   const label2 = document.createElement("label");
-  label2.textContent = "Título:";
+  label2.textContent = "Title:";
   const input2 = document.createElement("input");
   input2.type = "text";
   input2.id = "title";
@@ -53,7 +49,7 @@ function crearFormulario() {
   // Crear el elemento "Url de la Imagen"
   const li3 = document.createElement("li");
   const label3 = document.createElement("label");
-  label3.textContent = "Url de la Imagen:";
+  label3.textContent = "Url image:";
   const input3 = document.createElement("input");
   input3.type = "url";
   input3.id = "image";
@@ -65,7 +61,7 @@ function crearFormulario() {
   // Crear el elemento "Texto"
   const li4 = document.createElement("li");
   const label4 = document.createElement("label");
-  label4.textContent = "Texto:";
+  label4.textContent = "Description:";
   const textarea = document.createElement("textarea");
   textarea.id = "text";
   textarea.name = "text";
@@ -79,7 +75,7 @@ function crearFormulario() {
 
   // Crear el botón "Añadir"
   const boton = document.createElement("button");
-  boton.textContent = "Añadir";
+  boton.textContent = "Add";
   form.appendChild(boton);
 
   // Agregar el formulario al div con id="popup"
@@ -171,10 +167,6 @@ async function mostrarJuegos() {
       return a.date - b.date;
     });
     // Aqui tenemos ya los juegos ordenados por salida y mas abajo están los mapas de todo.
-    titulos = juegos.map((titulo) => titulo.title);
-    fechas = juegos.map((fecha) => fecha.date);
-    textos = juegos.map((texto) => texto.text);
-    imagenes = juegos.map((imagenes) => imagenes.image);
   } catch (e) {
     console.error("Hubo un error:", e.message);
   }
@@ -185,8 +177,8 @@ async function crearLista(e) {
 
   let spanActual; // Variable para almacenar el span actual
 
-  for (let i = 0; i < fechas.length; i++) {
-    const fecha = fechas[i];
+  for (let i = 0; i < juegos.length; i++) {
+    const fecha = juegos[i].date;
     const item = document.createElement("li");
     const texto = document.createTextNode(fecha);
     const span = document.createElement("span");
@@ -227,9 +219,9 @@ async function crearEventosenlista() {
 
       //Este es el código para modificar el contenido por cada juego
 
-      document.getElementById("titulo").innerHTML = titulos[indice];
-      document.getElementById("imagen").src = imagenes[indice];
-      document.getElementById("parrafo").innerHTML = textos[indice];
+      document.getElementById("titulo").innerHTML = juegos[indice].title;
+      document.getElementById("imagen").src = juegos[indice].image;
+      document.getElementById("parrafo").innerHTML = juegos[indice].text;
       const informacion = document.querySelector("#imagen");
       informacion.classList.remove("transicion");
       setTimeout(() => {
@@ -241,10 +233,6 @@ async function crearEventosenlista() {
 
 export {
   juegos,
-  titulos,
-  fechas,
-  textos,
-  imagenes,
   lista,
   crearLista,
   eventosParaFechas,

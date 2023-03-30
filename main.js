@@ -2,10 +2,6 @@
 
 import {
   juegos,
-  titulos,
-  fechas,
-  textos,
-  imagenes,
   lista,
   crearFormulario,
   crearLista,
