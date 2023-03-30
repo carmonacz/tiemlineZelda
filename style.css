@@ -1,10 +1,10 @@
 @font-face {
   font-family: hylian;
-  src: url(/fonts/Zelda_Demo.ttf);
+  src: url(./fonts/Zelda_Demo.ttf);
 }
 @font-face {
   font-family: triforce;
-  src: url(/fonts/Triforce.ttf);
+  src: url(./fonts/Triforce.ttf);
 }
 
 * {
