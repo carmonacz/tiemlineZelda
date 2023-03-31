@@ -130,7 +130,6 @@ function crearFormulario() {
   const main = document.querySelector("main");
   const botonPopup = document.createElement("button");
   botonPopup.id = "boton-popup";
-  botonPopup.textContent = "+";
   botonPopup.onclick = mostrarPopup;
   main.appendChild(botonPopup);
 
