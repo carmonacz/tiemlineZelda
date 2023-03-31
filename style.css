@@ -156,8 +156,8 @@ p {
   width: 50px;
   border: none;
   position: absolute;
-  bottom: 20px;
-  right: 5px;
+  bottom: 0px;
+  right: 0px;
 }
 
 button {
@@ -343,7 +343,7 @@ label {
   body {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 300px auto auto;
+    grid-template-rows: 300px 100px auto;
     grid-template-areas:
       "header"
       "nav"
@@ -393,10 +393,10 @@ label {
     font-size: 1.5rem;
   }
   main {
-    gap: 2rem;
-    justify-content: space-evenly;
+    gap: 3rem;
+    justify-content: flex-start;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   #titulo {
