@@ -93,12 +93,12 @@ function crearFormulario() {
   popupDiv.appendChild(cerrar);
 
   // Crear el botón para mostrar el popup
-  const footer = document.querySelector("footer");
+  const main = document.querySelector("main");
   const botonPopup = document.createElement("button");
   botonPopup.id = "boton-popup";
   botonPopup.textContent = "+";
   botonPopup.onclick = mostrarPopup;
-  footer.appendChild(botonPopup);
+  main.appendChild(botonPopup);
 
   // Agregar el div con id="popup" al documento
   document.body.appendChild(popupDiv);
