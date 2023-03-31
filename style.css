@@ -1,7 +1,5 @@
-@font-face {
-  font-family: hylian;
-  src: url(./fonts/Zelda_Demo.ttf);
-}
+@import url("https://fonts.googleapis.com/css2?family=Molengo&family=Raleway&display=swap%22");
+
 @font-face {
   font-family: triforce;
   src: url(./fonts/Triforce.ttf);
