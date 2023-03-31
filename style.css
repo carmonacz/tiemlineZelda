@@ -82,7 +82,7 @@ ul {
   );
 }
 
-ul li {
+nav li {
   background-color: rgb(35, 35, 35);
   border-radius: 50%;
   width: 2.7rem;
@@ -170,7 +170,12 @@ p {
 
 /* FORMULARIO */
 
+h3 {
+  display: flex;
+  justify-content: center;
+}
 .formulario {
+  font-family: "Courier New", Courier, monospace;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 400px;
@@ -455,4 +460,8 @@ label {
   to {
     transform: scale(1.13);
   }
+}
+
+span {
+  cursor: pointer;
 }
