@@ -1,12 +1,46 @@
 "use strict";
 
 let juegos;
-let titulos;
-let fechas;
-let textos;
-let imagenes;
 let lista = document.querySelector(".timeline-container ul");
 let eventosParaFechas;
+let formularioData = [];
+
+async function getData(url) {
+  try {
+    return await (await fetch(url)).json();
+  } catch (e) {
+    throw new Error("Problema con el fetch", { cause: e });
+  }
+}
+
+async function mostrarJuegos() {
+  try {
+    juegos = await getData(
+      "https://gist.githubusercontent.com/bertez/8e62741154903c35edb3bfb825a7f052/raw/b5cd5137fd168116cc71740f1fbb75819d0fa82e/zelda-timeline.json"
+    );
+    if (localStorage.getItem("formularioData")) {
+      formularioData = JSON.parse(localStorage.getItem("formularioData"));
+
+      for (const datos of formularioData) {
+        juegos.push(datos);
+      }
+    }
+
+    juegos.sort(function (a, b) {
+      return a.date - b.date;
+    });
+    // Aqui tenemos ya los juegos ordenados por salida y mas abajo están los mapas de todo.
+  } catch (e) {
+    console.error("Hubo un error:", e.message);
+  }
+}
+
+async function crearLista(e) {
+  await mostrarJuegos();
+  for (let i = 0; i < juegos.length; i++) {
+    lista.innerHTML += `<li><span class="cambia">${juegos[i].date}</span></li>`;
+  }
+}
 
 function crearFormulario() {
   // Crear el div con id="popup"
@@ -20,7 +54,7 @@ function crearFormulario() {
 
   // Crear el título del formulario
   const titulo = document.createElement("h3");
-  titulo.textContent = "Agregar Nuevo Juego";
+  titulo.textContent = "Add new game";
   form.appendChild(titulo);
 
   // Crear la lista de elementos del formulario
@@ -29,9 +63,9 @@ function crearFormulario() {
   // Crear el elemento "Año"
   const li1 = document.createElement("li");
   const label1 = document.createElement("label");
-  label1.textContent = "Año:";
+  label1.textContent = "Date:";
   const input1 = document.createElement("input");
-  input1.type = "text";
+  input1.type = "number";
   input1.id = "date";
   input1.name = "date";
   li1.appendChild(label1);
@@ -41,7 +75,7 @@ function crearFormulario() {
   // Crear el elemento "Título"
   const li2 = document.createElement("li");
   const label2 = document.createElement("label");
-  label2.textContent = "Título:";
+  label2.textContent = "Title:";
   const input2 = document.createElement("input");
   input2.type = "text";
   input2.id = "title";
@@ -53,7 +87,7 @@ function crearFormulario() {
   // Crear el elemento "Url de la Imagen"
   const li3 = document.createElement("li");
   const label3 = document.createElement("label");
-  label3.textContent = "Url de la Imagen:";
+  label3.textContent = "Url image:";
   const input3 = document.createElement("input");
   input3.type = "url";
   input3.id = "image";
@@ -65,7 +99,7 @@ function crearFormulario() {
   // Crear el elemento "Texto"
   const li4 = document.createElement("li");
   const label4 = document.createElement("label");
-  label4.textContent = "Texto:";
+  label4.textContent = "Description:";
   const textarea = document.createElement("textarea");
   textarea.id = "text";
   textarea.name = "text";
@@ -79,7 +113,7 @@ function crearFormulario() {
 
   // Crear el botón "Añadir"
   const boton = document.createElement("button");
-  boton.textContent = "Añadir";
+  boton.textContent = "Add";
   form.appendChild(boton);
 
   // Agregar el formulario al div con id="popup"
@@ -103,9 +137,6 @@ function crearFormulario() {
   // Agregar el div con id="popup" al documento
   document.body.appendChild(popupDiv);
 
-  // Agregar evento "submit" al formulario
-  form.addEventListener("submit", mostrarDatos);
-
   // Función para mostrar los datos introducidos
   function mostrarDatos(event) {
     event.preventDefault(); // Evita que se recargue la página al enviar el formulario
@@ -128,18 +159,28 @@ function crearFormulario() {
     nuevoItem.appendChild(spanFormulario);
     lista.appendChild(nuevoItem);
 
-    nuevoItem.addEventListener("click", function () {
-      document.getElementById("titulo").innerHTML = input2.value;
-      document.getElementById("imagen").src = input3.value;
-      document.getElementById("parrafo").innerHTML = textarea.value;
-    });
+    //Añadir dato al localStorage
 
-    // Agregar nodo de texto con la información del formulario
-    //nuevoItem.textContent = `${fecha} - ${titulo} - ${imagen} - ${texto}`;
+    const nuevoDato = {
+      date: fecha,
+      title: titulo,
+      image: imagen,
+      text: texto,
+    };
 
-    // Agregar el nuevo elemento de lista a la lista existente
-    lista.appendChild(nuevoItem);
+    if (localStorage.getItem("formularioData")) {
+      formularioData = JSON.parse(localStorage.getItem("formularioData"));
+    }
+
+    formularioData.push(nuevoDato);
+    localStorage.setItem("formularioData", JSON.stringify(formularioData));
+
+    ocultarPopup();
+    location.reload();
   }
+
+  // Agregar evento "submit" al formulario
+  form.addEventListener("submit", mostrarDatos);
 }
 
 function mostrarPopup() {
@@ -150,111 +191,48 @@ function ocultarPopup() {
   document.querySelector("#popup").classList.add("oculto");
 }
 
-async function getData(url) {
-  try {
-    let res = await fetch(url);
-
-    let data = await res.json();
-
-    return data;
-
-    //lo mismo en una linea
-    /* return await (await fetch(url)).json(); */
-  } catch (e) {
-    throw new Error("Problema con el fetch", { cause: e });
-  }
-}
-
-async function mostrarJuegos() {
-  try {
-    juegos = await getData(
-      "https://gist.githubusercontent.com/bertez/8e62741154903c35edb3bfb825a7f052/raw/b5cd5137fd168116cc71740f1fbb75819d0fa82e/zelda-timeline.json"
-    );
-    juegos.sort(function (a, b) {
-      return a.date - b.date;
-    });
-    // Aqui tenemos ya los juegos ordenados por salida y mas abajo están los mapas de todo.
-    titulos = juegos.map((titulo) => titulo.title);
-    fechas = juegos.map((fecha) => fecha.date);
-    textos = juegos.map((texto) => texto.text);
-    imagenes = juegos.map((imagenes) => imagenes.image);
-  } catch (e) {
-    console.error("Hubo un error:", e.message);
-  }
-}
-
-async function crearLista(e) {
-  await mostrarJuegos();
-
-  let spanActual; // Variable para almacenar el span actual
-
-  for (let i = 0; i < fechas.length; i++) {
-    const fecha = fechas[i];
-    const item = document.createElement("li");
-    const texto = document.createTextNode(fecha);
-    const span = document.createElement("span");
-    span.classList.add("cambia");
-    span.appendChild(texto);
-    item.appendChild(span);
-    lista.appendChild(item);
-  }
-}
-
 async function crearEventosenlista() {
   await mostrarJuegos();
   let eventosParaFechas = lista.querySelectorAll(".cambia");
   eventosParaFechas.forEach((elemento, indice) => {
-    elemento.addEventListener("click", function (e) {
-      //Este es el codigo para cambiar la clase span:
-      const spanItem = e.target.closest("span");
-      if (!spanItem) return; // Si no se encuentra ningún elemento "span", detener la función
-
-      const listItem = spanItem.closest("li");
-      if (!listItem) return; // Si no se encuentra ningún elemento "li", detener la función
-
-      let elemento = document.querySelectorAll("span");
-      for (var j = 0; j < elemento.length; j++) {
-        elemento[j].classList.remove("cambia");
-      }
-
-      e.target.classList.add("cambia");
-
-      listItem.style.background = "rgb(202, 1, 11)";
-      const items = lista.querySelectorAll("li");
-      for (const item of items) {
-        if (item !== listItem) {
-          item.style.background = "rgb(35, 35, 35)";
-          item.style.color = "rgb(255,255,255)";
-        }
-      }
-
-      //Este es el código para modificar el contenido por cada juego
-
-      document.getElementById("titulo").innerHTML = titulos[indice];
-      document.getElementById("imagen").src = imagenes[indice];
-      document.getElementById("parrafo").innerHTML = textos[indice];
-      const informacion = document.querySelector("#imagen");
-      informacion.classList.remove("transicion");
-      setTimeout(() => {
-        informacion.classList.add("transicion");
-      }, 50);
-    });
+    elemento.addEventListener("click", (e) => modificarLista(e, indice));
   });
 }
 
-export {
-  juegos,
-  titulos,
-  fechas,
-  textos,
-  imagenes,
-  lista,
-  crearLista,
-  eventosParaFechas,
-  crearEventosenlista,
-  crearFormulario,
-  mostrarPopup,
-  ocultarPopup,
-  getData,
-  mostrarJuegos,
-};
+function modificarLista(e, indice) {
+  //Este es el codigo para cambiar la clase span:
+  const spanItem = e.target.closest("span");
+  if (!spanItem) return; // Si no se encuentra ningún elemento "span", detener la función
+
+  const listItem = spanItem.closest("li");
+  if (!listItem) return; // Si no se encuentra ningún elemento "li", detener la función
+
+  let elemento = document.querySelectorAll("span");
+  for (var j = 0; j < elemento.length; j++) {
+    elemento[j].classList.remove("cambia");
+  }
+
+  e.target.classList.add("cambia");
+
+  listItem.style.background = "rgb(202, 1, 11)";
+  const items = lista.querySelectorAll("li");
+  for (const item of items) {
+    if (item !== listItem) {
+      item.style.background = "rgb(35, 35, 35)";
+      item.style.color = "rgb(255,255,255)";
+    }
+  }
+
+  //Este es el código para modificar el contenido por cada juego
+
+  document.querySelector("#titulo").innerHTML = juegos[indice].title;
+  document.querySelector("#imagen").src = juegos[indice].image;
+  document.querySelector("#parrafo").innerHTML = juegos[indice].text;
+  const informacion = document.querySelector("#imagen");
+  informacion.classList.remove("transicion");
+  setTimeout(() => {
+    informacion.classList.add("transicion");
+  }, 50);
+}
+
+export { crearLista, crearEventosenlista, crearFormulario };

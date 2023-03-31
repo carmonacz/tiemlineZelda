@@ -1,13 +1,8 @@
-@font-face {
-  font-family: hylian;
-  src: url(/fonts/Zelda_Demo.ttf);
-}
+@import url("https://fonts.googleapis.com/css2?family=Molengo&family=Raleway&display=swap%22");
+
 @font-face {
   font-family: triforce;
   src: url(/fonts/Triforce.ttf);
-}
-
-@media only screen and (max-width: 600px) {
 }
 
 * {
@@ -26,7 +21,7 @@ html {
 /* ESTRUCTURA */
 
 body {
-  font-family: hylian;
+  font-family: triforce;
   font-size: 1rem;
   height: 100vh;
   background-image: url(./img/fondo.jpg);
@@ -52,8 +47,6 @@ nav {
   grid-area: nav;
   display: flex;
   justify-content: center;
-  /* overflow: auto; */
-  /* background: linear-gradient(90deg, rgba(255,255,255,0) 45%, rgba(172,5,5,1) 46%, rgba(172,5,5,1) 54%, rgba(255,255,255,0) 55%) */
 }
 
 /* ESTRUCTURA */
@@ -64,11 +57,9 @@ nav {
   grid-area: nav;
   display: flex;
   justify-content: center;
-  /* overflow: auto; */
-  /* background: linear-gradient(90deg, rgba(255,255,255,0) 45%, rgba(172,5,5,1) 46%, rgba(172,5,5,1) 54%, rgba(255,255,255,0) 55%) */
 }
 
-ul {
+nav ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
@@ -82,7 +73,7 @@ ul {
   );
 }
 
-ul li {
+nav li {
   background-color: rgb(35, 35, 35);
   border-radius: 50%;
   width: 2.7rem;
@@ -98,11 +89,11 @@ ul li {
   font-weight: bold;
 }
 
-ul li:first-child {
+nav ul li:first-child {
   margin-top: 0;
 }
 
-ul li:last-child {
+nav ul li:last-child {
   margin-bottom: 0;
 }
 
@@ -140,6 +131,7 @@ main {
 }
 
 p {
+  font-family: "Raleway", sans-serif;
   font-size: 15px;
   text-align: left;
   padding-right: 1.5rem;
@@ -168,9 +160,37 @@ p {
   right: 5px;
 }
 
+button {
+  background-color: rgba(0, 0, 0, 0.655);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 20px;
+  transition: 0.3s ease all;
+  margin-top: 0.5rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  width: 100%;
+  height: 2rem;
+}
+
 /* FORMULARIO */
 
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+form ul {
+  list-style: none;
+}
 .formulario {
+  font-family: "Courier New", Courier, monospace;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 400px;
@@ -233,7 +253,7 @@ label {
 
 /* TABLET */
 
-@media only screen and (max-width: 1024px) and (min-width: 600px) {
+@media (min-width: 600px) {
   body {
     display: grid;
     grid-template-columns: auto;
@@ -283,7 +303,7 @@ label {
     margin-left: 4rem;
   }
 
-  ul {
+  nav ul {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -296,15 +316,15 @@ label {
     );
   }
 
-  ul li:first-child {
+  nav ul li:first-child {
     margin-left: 0;
   }
 
-  ul li:last-child {
+  nav ul li:last-child {
     margin-right: 0;
   }
 
-  ul li {
+  nav ul li {
     display: flex;
     width: 2.7rem;
     height: 2.7rem;
@@ -315,7 +335,7 @@ label {
 
 /* DESKTOP */
 
-@media only screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   html {
     max-width: 1200px;
   }
@@ -345,7 +365,7 @@ label {
     align-items: center;
   }
 
-  ul {
+  nav ul {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -358,15 +378,15 @@ label {
     );
   }
 
-  ul li:first-child {
+  nav ul li:first-child {
     margin-left: 0;
   }
 
-  ul li:last-child {
+  nav ul li:last-child {
     margin-right: 0;
   }
 
-  ul li {
+  nav ul li {
     display: flex;
     width: 4rem;
     height: 4rem;
@@ -455,4 +475,8 @@ label {
   to {
     transform: scale(1.13);
   }
+}
+
+span {
+  cursor: pointer;
 }
