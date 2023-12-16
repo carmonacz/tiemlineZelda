@@ -12,27 +12,27 @@
 }
 
 html {
-  height: 100vh;
   font-family: hylian;
-  font-size: 1rem;
-  margin: auto;
 }
 
 /* ESTRUCTURA */
-
 body {
   font-family: triforce;
   font-size: 1rem;
+  max-width: 1200px;
   height: 100vh;
   background-image: url(./img/fondo.jpg);
-  margin: 1rem;
+  margin: auto;
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 170px;
+  grid-template-columns: auto;
+  grid-template-rows: 300px 100px auto;
   grid-template-areas:
-    "header header"
-    "nav main";
+    "header"
+    "nav"
+    "main";
 }
+
+/* HEADER */
 
 header {
   grid-area: header;
@@ -43,29 +43,32 @@ header {
   margin-bottom: 2rem;
 }
 
-nav {
-  grid-area: nav;
-  display: flex;
-  justify-content: center;
+#logoZelda {
+  padding-top: 1rem;
+  object-fit: cover;
+  width: 25rem;
+  filter: drop-shadow(2.5px 2.5px 1.5px #0d0d0d70);
 }
 
-/* ESTRUCTURA */
+/* NAV */
 
-/* LISTA */
-
-nav {
-  grid-area: nav;
-  display: flex;
-  justify-content: center;
+.timeline-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 0 4.5rem;
 }
 
-nav ul {
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  gap: 1rem;
+.timeline-wrapper {
+  display: inline-block;
+}
+
+.timeline-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
   background: linear-gradient(
-    90deg,
+    0deg,
     rgba(255, 255, 255, 0) 45%,
     rgba(172, 5, 5, 1) 46%,
     rgba(172, 5, 5, 1) 54%,
@@ -73,37 +76,36 @@ nav ul {
   );
 }
 
-nav li {
+.timeline-container li {
   background-color: rgb(35, 35, 35);
   border-radius: 50%;
-  width: 2.7rem;
-  height: 2.7rem;
-  display: flex;
-  font-size: 1rem;
-  margin: auto;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: inline-flex;
+  font-size: 1.6rem;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
   position: relative;
-  font-family: triforce;
   font-weight: bold;
+  margin-right: 2rem;
 }
 
 nav ul li:first-child {
-  margin-top: 0;
+  margin-left: 0;
 }
 
 nav ul li:last-child {
-  margin-bottom: 0;
+  margin-right: 0;
 }
 
 span {
   color: white;
+  font-weight: 400;
+  cursor: pointer;
 }
 
-/* FIN LISTA */
-
-/* CONTENIDO PRINCIPAL */
+/* MAIN */
 
 main {
   grid-area: main;
@@ -117,126 +119,108 @@ main {
 
 #titulo {
   font-family: triforce;
-  font-size: 25px;
+  font-size: 3rem;
   text-align: center;
-  padding-bottom: 1rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
-
-#logoZelda {
-  object-fit: cover;
-  width: 15rem;
-  filter: drop-shadow(2.5px 2.5px 1.5px #0d0d0d70);
-}
-
-p {
-  font-family: "Raleway", sans-serif;
-  font-size: 15px;
-  text-align: left;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  padding-top: 1.5rem;
-  margin-bottom: 5rem;
+  margin: 2rem 0;
 }
 
 #imagen {
   object-fit: cover;
-  width: 10rem;
+  width: 20rem;
   border-radius: 0.5rem;
+  margin: 1rem 0;
 }
 
-/* FIN CONTENIDO PRINCIPAL */
+p {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.7rem;
+  text-align: justify;
 
-#boton-popup {
+  margin: 2rem 6rem;
+}
+
+/* BOTONES DE MOSTRAR EL FORMULARIO */
+
+.open-popup {
   background-color: transparent;
   background-image: url("./img/agregar.svg");
   box-shadow: none;
-  height: 50px;
-  width: 50px;
+  height: 3.5rem;
+  width: 3.5rem;
   border: none;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-
-button {
-  background-color: rgba(0, 0, 0, 0.655);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid white;
+  bottom: 1.5rem;
+  right: 1.5rem;
   cursor: pointer;
-  color: #fff;
-  margin-bottom: 20px;
-  transition: 0.3s ease all;
-  margin-top: 0.5rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
-  width: 100%;
-  height: 2rem;
 }
 
 /* FORMULARIO */
 
-h3 {
-  display: flex;
-  justify-content: center;
-}
-
-form ul {
-  list-style: none;
-}
-.formulario {
-  font-family: "Courier New", Courier, monospace;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-  width: 100%;
-  max-width: 400px;
-}
-
-input,
-textarea {
-  width: 100%;
-  border-radius: 3px;
-  padding: 0.3rem;
-  border: 1px solid white;
-  background-color: rgba(84, 69, 248, 0.76);
-  font-size: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-label {
-  font-size: 1rem;
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  margin-top: 1rem;
-}
-
 #popup {
-  background-color: rgba(4, 4, 4, 0.849);
-  border: 2px solid white;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 450px;
+  width: 40rem;
+  height: 40rem;
   z-index: 9999;
-  padding: 20px;
+  padding: 2rem;
   color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  font-size: 1.6rem;
+}
+
+form {
+  position: relative;
+  max-width: 20rem;
+  width: 100%;
+  height: 100%;
+  margin: 1.5rem 9.5rem;
+  padding: 2rem 1rem;
+  background-color: rgba(4, 4, 4, 0.849);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: "Courier New", Courier, monospace;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: white;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  background-color: rgba(84, 69, 248, 0.76);
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  color: white;
+}
+
+textarea {
+  resize: vertical;
 }
 
 .cerrar {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
+  top: 4rem;
+  right: 9rem;
+  font-size: 2.6rem;
+  color: rgba(172, 5, 5, 1);
   cursor: pointer;
 }
 
@@ -244,183 +228,191 @@ label {
   display: none;
 }
 
-.cerrar:hover {
-  transform: scale(1.25);
+.add-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.add-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
-/* FIN FORMULARIO */
-
-/* TABLET */
-
-@media (min-width: 600px) {
-  body {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 150px 80px auto;
-    grid-template-areas:
-      "header"
-      "nav"
-      "main";
-    margin: auto;
-    position: relative;
-  }
-
-  #titulo {
-    font-size: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  main {
-    justify-content: space-around;
-  }
-  #boton-popup {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-  }
-
-  p {
-    font-size: 17px;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    text-align: center;
-  }
-
-  header {
-    margin: auto;
-  }
-
-  #logoZelda {
-    width: 13rem;
-    padding-top: 1rem;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    margin-right: 4rem;
-    margin-left: 4rem;
-  }
-
-  nav ul {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0) 45%,
-      rgba(172, 5, 5, 1) 46%,
-      rgba(172, 5, 5, 1) 54%,
-      rgba(255, 255, 255, 0) 55%
-    );
-  }
-
-  nav ul li:first-child {
-    margin-left: 0;
-  }
-
-  nav ul li:last-child {
-    margin-right: 0;
-  }
-
-  nav ul li {
-    display: flex;
-    width: 2.7rem;
-    height: 2.7rem;
-  }
+.add-button:hover {
+  background-color: #45a049;
 }
 
-/* FIN TABLET */
+/* SCROLL */
+.timeline-container::-webkit-scrollbar {
+  background: transparent;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  border: 9px solid transparent;
+  box-shadow: none;
+  border-radius: 40px;
+}
+
+.timeline-container:hover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px gray;
+}
+
+.timeline-container:hover::-webkit-scrollbar-thumb:hover {
+  border: 8px solid transparent;
+  box-shadow: inset 0 0 0 10px lightskyblue;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 40px 0;
+}
 
 /* DESKTOP */
 
-@media (min-width: 1200px) {
-  html {
-    max-width: 1200px;
-  }
-
-  body {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 300px 100px auto;
-    grid-template-areas:
-      "header"
-      "nav"
-      "main";
-    margin: auto;
-    position: relative;
-  }
-
-  header {
-    margin: auto;
-  }
-
-  #logoZelda {
-    width: 25rem;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-  }
-
-  nav ul {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0) 45%,
-      rgba(172, 5, 5, 1) 46%,
-      rgba(172, 5, 5, 1) 54%,
-      rgba(255, 255, 255, 0) 55%
-    );
-  }
-
-  nav ul li:first-child {
-    margin-left: 0;
-  }
-
-  nav ul li:last-child {
-    margin-right: 0;
-  }
-
-  nav ul li {
-    display: flex;
-    width: 4rem;
-    height: 4rem;
-    font-size: 1.5rem;
-  }
-  main {
-    gap: 3rem;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 2rem;
-  }
-
-  #titulo {
-    font-size: 3rem;
-    /* margin-top: 1.5rem; */
-  }
-
-  #imagen {
-    width: 20rem;
-  }
-
+@media (max-width: 1350px) {
   p {
-    text-align: justify;
-    font-size: 30px;
-  }
-
-  #boton-popup {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    margin: 2rem 8rem;
   }
 }
 
 /* FIN DESKTOP */
+/* TABLET */
+
+@media (max-width: 700px) {
+  #logoZelda {
+    width: 22rem;
+  }
+
+  .timeline-container {
+    margin: 0 3.5rem;
+  }
+
+  .timeline-container li {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  #imagen {
+    width: 17rem;
+  }
+}
+
+@media (max-width: 550px) {
+  #logoZelda {
+    width: 18rem;
+  }
+
+  .timeline-container {
+    margin: 0 3rem;
+  }
+
+  .timeline-container li {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  #titulo {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 1.5rem 5rem;
+  }
+
+  #imagen {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 430px) {
+  header {
+    margin: 0;
+  }
+
+  #logoZelda {
+    width: 16rem;
+  }
+
+  .timeline-container {
+    margin: 0 1.5rem;
+  }
+
+  .timeline-container li {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  #titulo {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+
+  p {
+    margin: 1rem 3rem;
+  }
+
+  .open-popup {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  form {
+    margin: 1.5rem 8rem;
+  }
+
+  .cerrar {
+    right: 11rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  #logoZelda {
+    width: 15rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .timeline-container {
+    margin: 0 1rem;
+  }
+
+  #titulo {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  #imagen {
+    width: 12rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin: 1rem 2rem;
+  }
+
+  .open-popup {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* FIN TABLET */
 
 /* ANIMACIONES */
 
@@ -470,13 +462,9 @@ label {
 
 @keyframes cambiar-escala {
   from {
-    transform: scale(1);
+    transform: scale(0.9);
   }
   to {
-    transform: scale(1.13);
+    transform: scale(1.12);
   }
-}
-
-span {
-  cursor: pointer;
 }

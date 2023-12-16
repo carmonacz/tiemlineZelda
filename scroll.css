@@ -1,0 +1,64 @@
+:root {
+  --color-scrollbar: #d3d3d4;
+  --color-background-scrollbar: #eee;
+}
+
+/* SCROLL PARA CHROME */
+.timeline-container::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  width: 25px;
+  background: transparent;
+}
+
+.content__page::-webkit-scrollbar-thumb {
+  border: 9px solid transparent;
+  box-shadow: none;
+  border-radius: 40px;
+}
+
+.content__page:hover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px var(--color-scrollbar);
+}
+
+.content__page:hover::-webkit-scrollbar-thumb:hover {
+  border: 8px solid transparent;
+  box-shadow: inset 0 0 0 10px var(--color-secundary);
+}
+
+.content__page::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 40px 0;
+}
+
+/* SCROLL PARA MOZ */
+.content__page,
+.layout__aside {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+/* SCROLL PARA CHROME BARRA LATERA*/
+.layout__aside::-webkit-scrollbar {
+  width: 25px;
+  background: var(--color-secundary);
+}
+
+.layout__aside::-webkit-scrollbar-thumb {
+  border: 9px solid transparent;
+  box-shadow: none;
+  border-radius: 40px;
+}
+
+.layout__aside:hover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 10px var(--color-principal);
+}
+
+.layout__aside:hover::-webkit-scrollbar-thumb:hover {
+  border: 8px solid transparent;
+  box-shadow: inset 0 0 0 10px var(--color-principal);
+}
+
+.layout__aside::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 40px 0;
+}
