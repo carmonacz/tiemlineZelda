@@ -30,11 +30,17 @@ año, título, imágen y texto.<br/>
 
 ● Element.innerHTML <br /> <br />
 
+## Cómo usar
+
+1. Clona este repositorio: `git clone git@github.com:carmonacz/tiemlineZelda.git`
+2. Abre el archivo `index.html` en tu navegador.
+
+¡Explora el Timeline de Zelda y conoce más sobre la legendaria historia de los juegos de Zelda!
+
+
 ## Equipo
 
 Este proyecto fue creado por:
-
-
 
 <a href="https://github.com/carmonacz/tiemlineZelda/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=carmonacz/tiemlineZelda" />
@@ -47,4 +53,7 @@ Este proyecto fue creado por:
 ![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Git](	https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
+## Contribuciones
+
+¡Contribuciones son bienvenidas! Si encuentras algún problema o tienes sugerencias, por favor crea un issue o envía un pull request.
 
