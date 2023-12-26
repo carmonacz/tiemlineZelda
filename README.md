@@ -30,6 +30,16 @@ año, título, imágen y texto.<br/>
 
 ● Element.innerHTML <br /> <br />
 
+## Equipo
+
+Este proyecto fue creado por:
+
+
+
+<a href="https://github.com/carmonacz/tiemlineZelda/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=carmonacz/tiemlineZelda" />
+</a>
+
 ## Tecnologías empleadas
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
